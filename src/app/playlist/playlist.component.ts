@@ -16,7 +16,7 @@ export class PlaylistComponent implements OnInit {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
-      totalItems: 100,
+      totalItems: 1,
     };
   }
 
@@ -26,15 +26,18 @@ export class PlaylistComponent implements OnInit {
       this.playlist = data;
       console.log(this.playlist);
     });
+    this.config.totalItems = this.config.totalItems = this.dataService.getTrackCount();
   }
 
   onchange(): void {
     console.log(this.country);
     console.log('getting data');
+
     this.dataService.getTracks(1, this.country).subscribe((data) => {
       this.playlist = data;
       console.log(this.playlist);
     });
+    this.config.currentPage = 1;
   }
   pageChanged(event) {
     this.config.currentPage = event;
