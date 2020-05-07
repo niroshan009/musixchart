@@ -9,9 +9,11 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddKeyInterceptor } from './interceptor/add-key.interceptor';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, PlaylistComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

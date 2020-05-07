@@ -1,4 +1,11 @@
-<p>playlist works!</p>
+<div>
+  Country
+  <select [(ngModel)]="country" (change)="onchange()">
+    <option value="us">USA</option>
+    <option value="uk">UK</option>
+    <option value="it">Italy</option>
+  </select>
+</div>
 <table *ngIf="playlist && playlist.length">
   <thead>
     <tr>
