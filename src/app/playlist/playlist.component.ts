@@ -10,8 +10,15 @@ import { DataService } from '../services/data.service';
 export class PlaylistComponent implements OnInit {
   playlist: ITrack[];
   country: string = 'uk';
+  config: any;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: 100,
+    };
+  }
 
   ngOnInit(): void {
     console.log('getting data');
@@ -24,7 +31,14 @@ export class PlaylistComponent implements OnInit {
   onchange(): void {
     console.log(this.country);
     console.log('getting data');
-    this.dataService.getTracks(3, this.country).subscribe((data) => {
+    this.dataService.getTracks(1, this.country).subscribe((data) => {
+      this.playlist = data;
+      console.log(this.playlist);
+    });
+  }
+  pageChanged(event) {
+    this.config.currentPage = event;
+    this.dataService.getTracks(event, this.country).subscribe((data) => {
       this.playlist = data;
       console.log(this.playlist);
     });

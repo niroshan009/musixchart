@@ -10,10 +10,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddKeyInterceptor } from './interceptor/add-key.interceptor';
 
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [AppComponent, PlaylistComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgxPaginationModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
